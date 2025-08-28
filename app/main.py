@@ -3,8 +3,8 @@ from abc import ABC
 
 
 class IntegerRange:
-    def __init__(self, min_anount: int, max_amount: int) -> None:
-        self.min_amount = min_anount
+    def __init__(self, min_amount: int, max_amount: int) -> None:
+        self.min_amount = min_amount
         self.max_amount = max_amount
 
     def __set_name__(self, owner: type, name: str) -> None:
@@ -51,8 +51,9 @@ class AdultSlideLimitationValidator(SlideLimitationValidator):
 
 
 class Slide:
-    def __init__(self, name: str,
-                 limitation_class: SlideLimitationValidator) -> None:
+    def __init__(self,
+                 name: str,
+                 limitation_class: type[SlideLimitationValidator]) -> None:
         self.name = name
         self.limitation_class = limitation_class
 
